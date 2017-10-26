@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/scripts",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "module": "commonjs",
+        "target": "ES3",
+        "jsx": "react",
+        "downlevelIteration": true
+    },
+    "include": [
+        "./src/scripts/**/*",
+        "./src/scripts/*"
+    ]
+}

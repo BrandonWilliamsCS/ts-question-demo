@@ -1,0 +1,39 @@
+{
+  "name": "ts-question-demo",
+  "version": "0.1.0",
+  "description": "A questionnaire designed to demonstrate TypeScript",
+  "main": "node-server/index.js",
+  "dependencies": {
+    "express": "^4.16.2",
+    "immutable": "^3.8.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.18",
+    "@types/react-dom": "^16.0.2",
+    "awesome-typescript-loader": "^3.0.0-beta.18",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
+    "source-map-loader": "^0.1.6",
+    "typescript": "^2.5.3",
+    "webpack": "^1.14.0"
+  },
+  "scripts": {
+    "start": "npm run build && node ./node_modules/gulp/bin/gulp.js start-watch-build",
+    "build": "npm run build:clean && npm run build:copy && npm run build:css && npm run build:scripts",
+    "build:clean": "rm -rf ./dist",
+    "build:copy": "mkdir ./dist && tar -cf - -C ./src --exclude=css --exclude=scripts . | tar -xf - -C ./dist",
+    "build:css": "mkdir ./dist/css && tar -cf - -C ./src/css --exclude=tachyons . | tar -xf - -C ./dist/css",
+    "build:scripts": "webpack --config ./webpack.config.js && npm run build:scripts-plain",
+    "build:scripts-plain": "tar -cf - -C ./src/scripts --exclude='*.tsx' --exclude=components . | tar -xf - -C ./dist/scripts",
+    "server": "node ./node_modules/gulp/bin/gulp.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandonWilliamsCS/react-snake.git"
+  },
+  "private": true,
+  "license": "MIT",
+  "homepage": "https://github.com/BrandonWilliamsCS/react-snake#readme"
+}
